@@ -90,6 +90,7 @@
 }
 ```
 #### Response
+```
 {
   "order": {
     "order": {
@@ -138,6 +139,7 @@
     }
   }
 }
+```
 
 #### Request POST to /fast/v1/update
 ```
