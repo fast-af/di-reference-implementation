@@ -141,7 +141,7 @@
 }
 ```
 
-#### Request POST to /fast/v1/update
+#### Request POST to /fast/v1/update (Bill To Info)
 ```
 {
   "request_id": {
@@ -312,7 +312,7 @@
 }
 ```
 
-#### Request POST to /fast/v1/update
+#### Request POST to /fast/v1/update (Shipment Contact Info)
 ```
 {
   "request_id": {
@@ -455,7 +455,7 @@
 }
 ```
 
-#### Request POST to /fast/v1/update
+#### Request POST to /fast/v1/update (Shipping Option Selection)
 ```
 {
   "request_id": {
