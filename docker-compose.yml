@@ -3,7 +3,7 @@ services:
     web:
         build: .
         volumes:
-            - ./app:/app
+            - ./:/app
         ports:
             - "5000:5000"
     localtunnel:
@@ -12,3 +12,17 @@ services:
             - web
         command:
             --local-host web --port 5000 --subdomain direferenceimplementation
+    db:
+        build:
+            context: .
+            dockerfile: Dockerfile_db
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        links:
+            - web
+        ports:
+            - "5432:5432"
