@@ -5,7 +5,11 @@ separators = ["-", "-", "-", "-"]
 
 def print_request_details(req, req_json):
     pprint.pprint(separators, stream=sys.stderr, width=3)
-    pprint.pprint((f"Request headers to {req.url}:", req.headers), stream=sys.stderr)
+    trace_id = ""
+    for header in req.headers:
+        if header[0] == 'X-Datadog-Trace-Id':
+            trace_id = header[1]
+    pprint.pprint((f"Trace ID:", trace_id), stream=sys.stderr)
     pprint.pprint((f"{req.method} Fast->Seller Request to {req.url}:", req_json), stream=sys.stderr)
 
 def print_response_details(resp):
