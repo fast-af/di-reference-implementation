@@ -11,7 +11,7 @@ services:
         links:
             - web
         command:
-            --local-host web --port 5000 --subdomain direferenceimplementation
+            --local-host web --port 5000 --subdomain ${LOCALTUNNEL_SUBDOMAIN}
     db:
         build:
             context: .
