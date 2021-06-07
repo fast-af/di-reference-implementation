@@ -585,4 +585,231 @@
 ```
 
 ## Checkout Timer expires and order is set to capture payment
-Coming soon
+#### Request POST to /fast/v1/update (convert cart to order)
+```
+{
+  "order": {
+    "convert_cart_to_order": true,
+    "convert_mode": "CART_TO_ORDER_CONVERT_UPDATE_AND_CONVERT",
+    "is_cart": true,
+    "order_id": {
+      "value": "eb3b8e18-930d-4213-92a0-4993f9e536a8"
+    }
+  },
+  "request_id": {
+    "value": "6514b4d9-a41a-4e24-a3ff-75266e29492c"
+  },
+  "type": "ENTITY_TYPE_ORDER"
+}
+```
+#### Response
+```
+{
+  "order": {
+    "order": {
+      "bill_to": {
+        "address_1": "9000 Over St.",
+        "address_2": "#1",
+        "city_locality": "San Francisco",
+        "country": "US",
+        "country_code": "US",
+        "email": "pdp_simple_new_user-tester+lxbikihkrj-z7dnnxck3ta@fast.invalid",
+        "first_name": "Guest",
+        "last_name": "offastco",
+        "phone": "555-555-5555",
+        "postal_code": "94107",
+        "state_province_code": "CA"
+      },
+      "currency_code": "USD",
+      "external_id": "a98a387e-02ec-41a8-a38e-e3ca5fb0548d",
+      "id": {
+        "value": "eb3b8e18-930d-4213-92a0-4993f9e536a8"
+      },
+      "lines": [
+        {
+          "customizations": [],
+          "description": "",
+          "discounted_unit_price": "32.99",
+          "discounts": [],
+          "external_id": "ee121991-2d0d-443b-a2c4-651666cac754",
+          "external_options": [],
+          "external_product_id": "123",
+          "external_variant_id": "",
+          "fulfillment_mode": 1,
+          "id": {
+            "value": "7260da2d-d6c2-44b4-a071-7bdf819f5a2a"
+          },
+          "image_url": "",
+          "line_discount_amount": "0.0",
+          "name": "Blue Hoodie",
+          "quantity": 1,
+          "quantity_fulfilled": 0,
+          "subtotal_amount": "32.99",
+          "tax_amount": "0.00",
+          "total_amount": "32.99",
+          "unit_price": "32.99"
+        }
+      ],
+      "order_type": "ORDER_TYPE_CART",
+      "shipment_plans": [
+        {
+          "available_options": [
+            {
+              "cost": "0.00",
+              "external_id": "3e22e6e0-b52d-4c98-94e9-febb66299679",
+              "name": "Free Shipping",
+              "shipment_type": 99,
+              "tax": "0.00",
+              "total": "0.00"
+            }
+          ],
+          "external_id": "73498753-d0e2-4f92-accc-7c4fcb94f424",
+          "id": {
+            "value": "bdb5967c-3894-4ac4-8dea-5fcc1915c132"
+          },
+          "selected_option": {
+            "cost": "0.00",
+            "external_id": "3e22e6e0-b52d-4c98-94e9-febb66299679",
+            "shipment_type": 99,
+            "tax": "0.00",
+            "total": "0.00"
+          },
+          "ship_to": {
+            "address_1": "9000 Over St.",
+            "address_2": "#1",
+            "city_locality": "San Francisco",
+            "country": "US",
+            "country_code": "US",
+            "email": "pdp_simple_new_user-tester+lxbikihkrj-z7dnnxck3ta@fast.invalid",
+            "first_name": "Guest",
+            "last_name": "offastco",
+            "phone": "555-555-5555",
+            "postal_code": "94107",
+            "state_province_code": "CA"
+          }
+        }
+      ],
+      "status": "ORDER_STATUS_CART",
+      "sub_total": "32.99",
+      "total_amount": "32.99",
+      "total_discounts": "0.0",
+      "total_tax": "0.0"
+    }
+  },
+  "request_id": {
+    "value": "abc684fe-55e1-4c87-b707-3b611877691c"
+  },
+  "type": "ENTITY_TYPE_ORDER"
+}
+```
+
+
+#### Request POST to /fast/v1/read
+```
+{
+  "order": {
+    "external_order_id": "c826f409-fd6f-42f9-ae8b-d5a862ddcf27"
+  },
+  "type": "ENTITY_TYPE_ORDER"
+}
+```
+#### Response
+```
+{
+  "order": {
+    "order": {
+      "bill_to": {
+        "address_1": "9000 Over St.",
+        "address_2": "#1",
+        "city_locality": "San Francisco",
+        "country": "US",
+        "country_code": "US",
+        "email": "pdp_simple_new_user-tester+lxbikihkrj-z7dnnxck3ta@fast.invalid",
+        "first_name": "Guest",
+        "last_name": "offastco",
+        "phone": "555-555-5555",
+        "postal_code": "94107",
+        "state_province_code": "CA"
+      },
+      "currency_code": "USD",
+      "external_id": "c826f409-fd6f-42f9-ae8b-d5a862ddcf27",
+      "id": {
+        "value": "5d6b3b40-a9c8-469a-9da6-d35408fadc2a"
+      },
+      "lines": [
+        {
+          "customizations": [],
+          "description": "",
+          "discounted_unit_price": "32.99",
+          "discounts": [],
+          "external_id": "ee121991-2d0d-443b-a2c4-651666cac754",
+          "external_options": [],
+          "external_product_id": "123",
+          "external_variant_id": "",
+          "fulfillment_mode": 1,
+          "id": {
+            "value": "7260da2d-d6c2-44b4-a071-7bdf819f5a2a"
+          },
+          "image_url": "",
+          "line_discount_amount": "0.0",
+          "name": "Blue Hoodie",
+          "quantity": 1,
+          "quantity_fulfilled": 0,
+          "subtotal_amount": "32.99",
+          "tax_amount": "0.00",
+          "total_amount": "32.99",
+          "unit_price": "32.99"
+        }
+      ],
+      "order_type": "ORDER_TYPE_CART",
+      "shipment_plans": [
+        {
+          "available_options": [
+            {
+              "cost": "0.00",
+              "external_id": "3e22e6e0-b52d-4c98-94e9-febb66299679",
+              "name": "Free Shipping",
+              "shipment_type": 99,
+              "tax": "0.00",
+              "total": "0.00"
+            }
+          ],
+          "external_id": "73498753-d0e2-4f92-accc-7c4fcb94f424",
+          "id": {
+            "value": "bdb5967c-3894-4ac4-8dea-5fcc1915c132"
+          },
+          "selected_option": {
+            "cost": "0.00",
+            "external_id": "3e22e6e0-b52d-4c98-94e9-febb66299679",
+            "shipment_type": 99,
+            "tax": "0.00",
+            "total": "0.00"
+          },
+          "ship_to": {
+            "address_1": "9000 Over St.",
+            "address_2": "#1",
+            "city_locality": "San Francisco",
+            "country": "US",
+            "country_code": "US",
+            "email": "pdp_simple_new_user-tester+lxbikihkrj-z7dnnxck3ta@fast.invalid",
+            "first_name": "Guest",
+            "last_name": "offastco",
+            "phone": "555-555-5555",
+            "postal_code": "94107",
+            "state_province_code": "CA"
+          }
+        }
+      ],
+      "status": "ORDER_STATUS_CART",
+      "sub_total": "32.99",
+      "total_amount": "32.99",
+      "total_discounts": "0.0",
+      "total_tax": "0.0"
+    }
+  },
+  "request_id": {
+    "value": "abc684fe-55e1-4c87-b707-3b611877691c"
+  },
+  "type": "ENTITY_TYPE_ORDER"
+}
+```
