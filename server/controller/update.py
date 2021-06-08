@@ -43,6 +43,62 @@ def update_shipping_option(r, order):
 
     return order
 
+def update_coupon(r, order):
+    coupon = r.get("order", {}).get("coupon", {})
+    if coupon != {}:
+        coupons = order.get("order", {}).get("order", {}).get("coupons", [])
+        if coupon["remove"]:
+            for i, c in enumerate(coupons):
+                if c["code"] == coupon["code"]:
+                    coupons.pop(i)
+                    break
+        else:
+            new_coupon = { # TODO: add coupon table and fetch from that to populate
+                "code": coupon["code"],
+                "origin": "DISCOUNT_ORIGIN_VENDOR",
+                "type": "DISCOUNT_TYPE_REGULAR",
+                "applied": True,
+                "total_amount": "3.50"
+            }
+            coupons.append(new_coupon)
+
+
+        order["order"]["order"]["coupons"] = coupons
+
+    return order
+
+def update_billing_details(r, order):
+    billing_details = r.get("order", {}).get("bill_to", {})
+
+    if billing_details != {}:
+        order["order"]["order"]["bill_to"] = billing_details
+
+    return order
+
+def update_line_items(r, order):
+    items = r.get("order", {}).get("items", [])
+
+    if items != []:
+        for item in items:
+            req_item_id = item.get("item_id", {}).get("value", "")
+
+            found_item = False
+            for i, resp_item in enumerate(order.get("order", {}).get("order", {}).get("lines", [])):
+                resp_item_id = resp_item.get("id", {}).get("value", "")
+                if req_item_id == resp_item_id:
+                    order["order"]["order"]["lines"][i] = item # TODO: this should add fields like total, etc to this lines object
+                    found_item = True
+                    break
+            
+            if not found_item:
+                order["order"]["order"]["lines"].append(item) # TODO: this should add fields like total, etc to this lines object
+
+    return order
+
+                
+
+
+
 def update_shipment_details(r, order):
     selected_option_external_uuid = helpers.create_uuid()
 

@@ -8,6 +8,7 @@ import server.controller.update as update
 import server.controller.delete as delete
 
 app = Flask(__name__)
+app.config['WTF_CSRF_ENABLED'] = True
 
 @app.route('/fast/v1/create', methods=['POST'])
 def create_order():
@@ -45,6 +46,15 @@ def update_order():
     # Update Selected Shipping Option
     order = update.update_shipping_option(r, order)
 
+    # Update Coupon
+    order = update.update_coupon(r, order)
+
+    # Update Bill To
+    order = update.update_billing_details(r, order)
+
+    # Update Items
+    order = update.update_line_items(r, order)
+
     update.update_order(order)
 
     full_resp = make_response(jsonify(order), 200)
@@ -60,6 +70,7 @@ def delete_order():
 
     resp = {
         "request_id": helpers.create_request_id(),
+        "type": r.get("type", None),
         "order": {}
     }
     
