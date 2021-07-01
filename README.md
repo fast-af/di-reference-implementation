@@ -25,6 +25,14 @@ To configure a static URL you will need to update the variable `LOCALTUNNEL_SUBD
 NOTE: Please make sure to edit this field, if you use `LOCALTUNNEL_SUBDOMAIN=direferenceimplementation` you will not be able to correctly onboard this test app.
 When localtunnel runs it will take the value in `LOCALTUNNEL_SUBDOMAIN` and create the URL: https://<LOCALTUNNEL_SUBDOMAIN>.loca.lt
 
+1. Download this repository or clone via command line, e.g. `git clone git@github.com:fast-af/di-reference-implementation.git`
+
+2. Navigate to the directory, `cd di-reference-implementation`
+
+3. Open the .env file, which is a hidden file, e.g. `nano .env`
+
+4. Update the variable `LOCALTUNNEL_SUBDOMAIN` in the .env file to something unique, e.g. acmesportsgoods, and save the file
+
 ### 2. Setup Seller App in Sandbox
 Next you will setup your sandbox application.
 Navigate [here](https://sdash.sandbox.fast.co/) to begin setup.
@@ -57,13 +65,15 @@ Navigate [here](https://sdash.sandbox.fast.co/) to begin setup.
 
 ### 3. Start Application
 
+NOTE: Make sure you have opened the Docker Desktop app at least once
+
 1. Open a terminal window and run `docker-compose up`
 
 Your logs should look something like this:
 
 ![](docs/images/docker-compose-startup-logs.png)
 
-Make sure that the log for localtunnel that says `your url is: https://direferenceimplementation2.loca.lt` matches the url you put in the Rest API URL while onboarding. 
+Make sure that the log for localtunnel that says `your url is: https://acmesportsgoods.loca.lt` matches the url you put in the Rest API URL while onboarding. 
 If it does not match please navigate to [step 1](#1-setup-env-file) to review how it's done.
 
 ### 4. Setup Fast Test Suite CLI
