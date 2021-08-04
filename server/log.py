@@ -13,6 +13,14 @@ def print_request_details(req, req_json):
     pprint.pprint((f"Headers:", req.headers), stream=sys.stderr)
     pprint.pprint((f"{req.method} Fast->Seller Request to {req.url}:", req_json), stream=sys.stderr)
 
+def print_seller_to_fast_request_details(req_json, url):
+    pprint.pprint(separators, stream=sys.stderr, width=3)
+    pprint.pprint((f"Seller->Fast Request to {url}:", req_json), stream=sys.stderr)
+
+def print_fast_to_seller_response_details(resp):
+    pprint.pprint(separators, stream=sys.stderr, width=3)
+    pprint.pprint(("Fast->Seller Response: ", resp.get_json()), sys.stderr)
+
 def print_response_details(resp):
     pprint.pprint(separators, stream=sys.stderr, width=3)
     pprint.pprint(("Seller->Fast Response: ", resp.get_json()), sys.stderr)
