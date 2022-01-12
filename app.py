@@ -71,6 +71,11 @@ def update_order():
     if items != []:
         order = update.update_line_items(r, order, items)
 
+    # Update Order Status To Booked
+    order_status = r.get("order", {}).get("status", "")
+    if order_status != "":
+        order = update.update_order_status(r, order, order_status)
+
     update.update_order(order)
 
     # read object again to make sure we return the full Fast order

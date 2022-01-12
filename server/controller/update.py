@@ -31,6 +31,11 @@ def update_order(order):
             conn.close()
             print('Database connection closed.')
 
+def update_order_status(r, order, status):
+    order["order"]["order"]["status"] = status
+
+    return order
+
 def update_shipping_option(r, order, shipping_option):
     shipment_plans = order.get("order", {}).get("order", {}).get("shipment_plans", {})
     shipment_plan_id = shipping_option.get("plan_id", {}).get("value", "")
