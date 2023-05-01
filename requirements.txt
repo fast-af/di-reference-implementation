@@ -1,4 +1,4 @@
-Flask==2.0.0
+Flask==2.3.2
 psycopg2==2.8.6
 requests
 Flask-WTF
